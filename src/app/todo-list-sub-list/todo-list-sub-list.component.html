@@ -1,0 +1,58 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-lg rounded-4" id="list1" style="background-color: #f8f9fa;">
+          <div class="card-body py-4 px-4 px-md-5">
+
+            <!-- Back Button Section -->
+            <div class="mb-4">
+              <button (click)="goBack()" class="btn btn-secondary btn-sm">
+                <i class="fa fa-arrow-left"></i> Back
+              </button>
+            </div>
+            <h1 class="text-center text-primary fw-bold my-4" style="font-size: 2rem;">{{categoryname}}</h1>
+            <!-- Add Subtask Section -->
+            <div class="pb-3">
+              <div class="card shadow-sm border-0">
+                <div class="card-body">
+                  <form [formGroup]="ListForm" (ngSubmit)="onSubmit()">
+                    <div class="d-flex flex-row align-items-center">
+                      <input formControlName="Name" required type="text" class="form-control form-control-lg me-3"
+                        placeholder="Add new todolist..." />
+                      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-plus"></i></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subtask List Section -->
+            <hr class="my-4" />
+            <ul *ngFor="let _todolist of todolist" class="list-group list-group-flush">
+              <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                <!-- Checkbox and Task Content -->
+                <div class="d-flex align-items-center">
+                  <input type="checkbox" [checked]="isChecked[_todolist.listId]" class="form-check-input me-3" id="check2" 
+                    (change)="toggleStrikeThrough($event, _todolist.listId)">
+                  <div class="list-item-content" [ngClass]="{'strikethrough': isChecked[_todolist.listId], 'move-down': isChecked[_todolist.listId]}">
+                    <p class="lead fw-normal mb-0">{{_todolist.name}}</p>
+                  </div>
+                </div>
+
+                <!-- Delete Actions -->
+                <div class="d-flex">
+               
+                  <a (click)="deleteLists(_todolist.listId)" style="cursor: pointer;" class="text-danger" data-mdb-tooltip-init title="Delete subtask">
+                    <i class="fa fa-trash-alt"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

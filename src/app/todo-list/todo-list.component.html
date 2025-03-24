@@ -1,0 +1,47 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-lg rounded-4" id="list1" style="background-color: #f8f9fa;">
+          <div class="card-body py-4 px-4 px-md-5">
+            <h1 class="text-center text-primary fw-bold mb-4" style="font-size: 2.5rem;">Todo App</h1>
+            <!-- Add Category Section -->
+            <div class="pb-3">
+              <div class="card shadow-sm border-0">
+                <div class="card-body">
+                  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                    <div class="d-flex flex-row align-items-center">
+                      <input formControlName="Categoryname" required type="text" class="form-control form-control-lg me-3"
+                        id="category" placeholder="Add new todo..." />
+                      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-plus"></i></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category List Section -->
+            <hr class="my-4" />
+            <ul *ngFor="let category of categories" class="list-group list-group-flush">
+              <li class="list-group-item d-flex align-items-center justify-content-between py-3">
+                <!-- Category Name and Todo Count -->
+                <div class="d-flex align-items-center">
+                  <a (click)="OnClick(category.categoryId)" class="text-dark text-decoration-none me-3" style="cursor: pointer;">
+                    <h5 class="fw-bold mb-0">{{ category.categoryName }}</h5>
+                  </a>
+                  <span class="badge bg-secondary rounded-pill">{{ category.todoCount }} Todos</span>
+                </div>
+
+                <!-- Delete Action -->
+                <a (click)="deleteCategory(category.categoryId)" style="cursor: pointer;" class="text-danger" data-mdb-tooltip-init title="Delete category">
+                  <i class="fa fa-trash-alt"></i>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

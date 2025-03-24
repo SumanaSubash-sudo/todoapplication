@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="card shadow-lg" style="background-color: #f8f9fa;">
+        <div class="card-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="register-tab" data-bs-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-4" id="authTabsContent">
+                <!-- Login Tab -->
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <form>
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email address</label>
+                            <input [(ngModel)]="loginObj.Email" type="email" class="form-control" id="Email" required [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input [(ngModel)]="loginObj.Password" type="password" class="form-control" id="Password" required [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 mt-3" (click)="onLogin()">Login</button>
+                    </form>
+                </div>
+
+                <!-- Register Tab -->
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <form [formGroup]="registerform" (ngSubmit)="onSubmit()">
+                    <!--    <div class="mb-3">
+                            <label for="registerName" class="form-label">Full Name</label>
+                            <input class="form-control" placeholder="Full name" formControlName="FirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email address</label>
+                            <input class="form-control" type="email" placeholder="Email" formControlName="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input class="form-control" type="password" placeholder="Password" formControlName="Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                            <input class="form-control" placeholder="Confirm Password" type="password" formControlName="ConfirmPassword">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-3">Register</button>
+                        -->
+                    </form>
+                    <p>Currently register is not supported. we are maintaining only single user. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
